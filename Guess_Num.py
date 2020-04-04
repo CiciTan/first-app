@@ -14,11 +14,12 @@ import random
 # Now you can directly call the seed function:
 # 	seed()
 
+
 # Verify whether the player wants to continue. Filter out invalid responses.
 # Return True or False only
-def validate_continue() -> bool:
+def isContinue() -> bool:
     while True:
-        ans = input("Do you want to continue? Y/N \n")
+        ans: str = input("Do you want to continue? Y/N \n")
         if (ans == 'n') or (ans == 'N') or (ans == "no") or (ans == "No") or (ans == "NO") or (ans == "Nope") or (
                 ans == "nope"):
             return False
@@ -28,12 +29,13 @@ def validate_continue() -> bool:
         else:
             print("Answer not valid! Please try again.")
 
+
 # Convert user input into int. Filter out invalid input.
 # Return int
-def input_num() -> int:
+def userInputNumber() -> int:
     while True:
         try:
-            keyin = int(input("Please guess an integer between 0 to 3: \n"))
+            keyin: int = int(input("Please guess an integer between 0 to 3: \n"))
             return keyin
 
         except ValueError:
@@ -42,29 +44,28 @@ def input_num() -> int:
 
 # Generate a random integer
 # Return int
-def gen_random_int() -> int:
+def generateRandomNumber() -> int:
     random.seed()
     # Seed is required to generate random numbers
     return int(random.random() * 3)
+    # random.random() generates a random number between 0 to 1
 
-
-# random.random() generates a random number between 0 to 1
 
 # Game logic, validate whether user guessed correctly
 # No return
-def win_or_lose(random_int, input_num):
-    if random_int == input_num:
+def guessNumberGame():
+    generatedNumber: int = generateRandomNumber()
+    if generatedNumber == userInputNumber():
         print("Yeah, you guessed right!")
     else:
-        print("Nope, wrong guess. My number is actually: ", random_int)
+        print("Nope, wrong guess. My number is : ", generatedNumber)
 
 
 # Main thread is here
 while True:
+    guessNumberGame()
 
-    win_or_lose(gen_random_int(), input_num())
-
-    if not validate_continue():
+    if not isContinue():
         break
 
-print("Thanks for playing")
+print("Thanks for playing!")

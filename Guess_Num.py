@@ -32,17 +32,28 @@ def Input_Num() -> int:
 		except ValueError:
 			print("Invalid input! Please try again.")
 
-
-while(True):
-	random.seed() 
+def Gen_Random_Int() -> int:
+# Generate a random integer
+# Return int
+	random.seed()
 	# Seed is required to generate random numbers
-	a = int(random.random() * 3)
+	return int(random.random() * 3)
 	# random.random() generates a random number between 0 to 1
+
+def Win_Or_Lose(Random_Int, Input_Num):
+# Game logic, validate whether user guessed correctly
+# No return
+	if Random_Int == Input_Num: print("Yeah, you guessed right!")
+	else: print("Nope, wrong guess. My number is actually: ", Random_Int)
+
+# Main thread is here
+while(True):
+	
+	a = Gen_Random_Int()
 
 	b = Input_Num()
 	
-	if a == b: print("Yeah, you guessed right!")
-	else: print("Nope, wrong guess. My number is actually: " + str(a))
+	Win_Or_Lose(a, b)
 	
 	ShouldContinue = Validate_Continue()
 	if ShouldContinue == True: continue

@@ -52,8 +52,7 @@ while(True):
 	
 	Win_Or_Lose(Gen_Random_Int(), Input_Num())
 	
-	if Validate_Continue(): continue
-	else: break
+	if Validate_Continue() == False: break
 	
 print("Thanks for playing")
 

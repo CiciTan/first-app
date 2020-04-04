@@ -46,18 +46,14 @@ def Win_Or_Lose(Random_Int, Input_Num):
 	if Random_Int == Input_Num: print("Yeah, you guessed right!")
 	else: print("Nope, wrong guess. My number is actually: ", Random_Int)
 
+
 # Main thread is here
 while(True):
 	
-	a = Gen_Random_Int()
-
-	b = Input_Num()
+	Win_Or_Lose(Gen_Random_Int(), Input_Num())
 	
-	Win_Or_Lose(a, b)
-	
-	ShouldContinue = Validate_Continue()
-	if ShouldContinue == True: continue
-	elif ShouldContinue == False: break
+	if Validate_Continue(): continue
+	else: break
 	
 print("Thanks for playing")
 
